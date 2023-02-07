@@ -5,23 +5,35 @@
 }
 
 main {
+    position: relative;
     background: black;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
     width: 100vw;
     height: 100vh;
 }
 
 div.racket {
+    position: absolute;
     background: white;
-    width: 20px;
-    height: 100px;
+    width: 15px;
+    height: 15vh;
+}
+
+div.racket#P1 {
+    top: 0vh;
+    left: 5vw;
+}
+
+div.racket#P2 {
+    top: 0vh;
+    right: 5vw;
 }
 
 div#ball {
-    background: white;
+    position: absolute;
+    top: 0vh;
+    left: 50%;
     width: 10px;
     height: 10px;
+    background: white;
     border-radius: 10em;
 }
