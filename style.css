@@ -14,8 +14,9 @@ main {
 div.racket {
     position: absolute;
     background: white;
-    width: 15px;
+    width: 1vw;
     height: 15vh;
+    transition: top 0.25s;
 }
 
 div.racket#P1 {
@@ -25,15 +26,15 @@ div.racket#P1 {
 
 div.racket#P2 {
     top: 0vh;
-    right: 5vw;
+    left: 94vw;
 }
 
 div#ball {
     position: absolute;
-    top: 0vh;
-    left: 50%;
-    width: 10px;
-    height: 10px;
+    top: 0;
+    left: 0;
+    width: 1vh;
+    height: 1vh;
     background: white;
-    border-radius: 10em;
+    border-radius: 50%;
 }
