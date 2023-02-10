@@ -2,7 +2,7 @@ let playerOne = document.querySelector("div.racket#P1")
 let playerTwo = document.querySelector("div.racket#P2")
 let theBall = document.querySelector("div#ball")
 let directionX = true;
-let directionY;
+let directionY = 0;
 let ballX = 50;
 let ballY = 0;
 let pingY = 0;
@@ -39,6 +39,8 @@ document.addEventListener("keydown", (event) => {
 // *** Move The Ball ***//
 
 function moveTheBall(directionX, directionY) {
+    // console.log(directionX);
+    // console.log(directionY);
     if (gameEnd == true) {
         alert("GAME OVER");
     }
@@ -47,46 +49,44 @@ function moveTheBall(directionX, directionY) {
 
         // position de la balle sur X
         if (directionX && ballX < maxWindowWidth) {
-            ballX = ballX + 1;
+            ballX = ballX + 0.3;
             theBall.style.left = `${ballX}vw`;
-            console.log(ballX);
         }
 
-        else if (directionX == false && ballX > maxWindowWidth) {
-            ballX = ballX - 1;
+        else if (directionX == false && ballX < maxWindowWidth) {
+            ballX = ballX - 0.3;
             theBall.style.left = `${ballX}vw`;
-            console.log(ballX);
         }
 
         // position de la balle sur Y
-        if (directionY && ballY < maxWindowHeight) {
-            ballY = ballY + 1;
+        if (directionY == 1 && ballY < maxWindowHeight) {
+            ballY = ballY + 0.3;
             theBall.style.top = `${ballY}vh`;
-            console.log(ballY);
         }
 
-        else if (directionY == false && ballY > maxWindowHeight) {
-            ballY = ballY - 1;
+        else if (directionY == -1 && ballY < maxWindowHeight) {
+            ballY = ballY - 0.3;
             theBall.style.top = `${ballY}vh`;
-            console.log(ballY);
         }
 
         if (ballY == maxWindowHeight) {
             directionY = false
         }
 
-        if ((5 < ballX < 6) && (pingY < ballY < (pingY + 15))) {
-            directionX = false;
+        // collision avec les rackets
+        if ((5 <= ballX && ballX <= 6) && ((pingY <= ballY) && (ballY <= (pingY + 15)))) {
+            directionX = true;
         }
 
-        if ((94 < ballX < 95) && (pongY < ballY < (pongY + 15))) {
+        if ((94 <= ballX && ballX <= 95) && ((pongY <= ballY) && (ballY <= (pongY + 15)))) {
             directionX = false;
         }
 
         // Si la balle touche un bord ou non :
-        if (ballX != 99) {
+        if (0 < ballX && ballX < 99) {
             window.requestAnimationFrame(() => {
                 moveTheBall(directionX, directionY);
+                console.log(ballX);
             })
         }
 
