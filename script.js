@@ -9,6 +9,7 @@ let pingY = 0;
 let pongY = 0;
 let gameWindowHeight = 85;
 let maxWindowWidth = 99;
+let minWindowHeight = 0;
 let maxWindowHeight = 99;
 let gameEnd = false;
 
@@ -48,45 +49,71 @@ function moveTheBall(directionX, directionY) {
     else {
 
         // position de la balle sur X
-        if (directionX && ballX < maxWindowWidth) {
+        if (directionX) {
             ballX = ballX + 0.3;
             theBall.style.left = `${ballX}vw`;
         }
 
-        else if (directionX == false && ballX < maxWindowWidth) {
+        else if (directionX == false) {
             ballX = ballX - 0.3;
             theBall.style.left = `${ballX}vw`;
         }
 
         // position de la balle sur Y
-        if (directionY == 1 && ballY < maxWindowHeight) {
+        if (directionY == 1) {
             ballY = ballY + 0.3;
             theBall.style.top = `${ballY}vh`;
         }
 
-        else if (directionY == -1 && ballY < maxWindowHeight) {
+        else if (directionY == -1) {
             ballY = ballY - 0.3;
             theBall.style.top = `${ballY}vh`;
         }
 
-        if (ballY == maxWindowHeight) {
-            directionY = false
+        if (ballY > 99) {
+            directionY = -1
+        }
+
+        if (ballY < 0) {
+            directionY = 1
         }
 
         // collision avec les rackets
         if ((5 <= ballX && ballX <= 6) && ((pingY <= ballY) && (ballY <= (pingY + 15)))) {
-            directionX = true;
+            if (pingY <= ballY && ballY <= pingY + 5) {
+                directionX = true;
+                directionY = -1;
+            }
+            else if (pingY + 5 <= ballY && ballY <= pingY + 10) {
+                directionX = true;
+                directionY = 0;
+            }
+            else {
+                directionX = true;
+                directionY = 1;
+            }
         }
 
         if ((94 <= ballX && ballX <= 95) && ((pongY <= ballY) && (ballY <= (pongY + 15)))) {
-            directionX = false;
+            if (pongY <= ballY && ballY <= pongY + 5) {
+                directionX = false;
+                directionY = -1;
+            }
+            else if (pongY + 5 <= ballY && ballY <= pongY + 10) {
+                directionX = false;
+                directionY = 0;
+            }
+            else {
+                directionX = false;
+                directionY = 1;
+            }
         }
 
         // Si la balle touche un bord ou non :
         if (0 < ballX && ballX < 99) {
             window.requestAnimationFrame(() => {
                 moveTheBall(directionX, directionY);
-                console.log(ballX);
+                console.log(ballY);
             })
         }
 
