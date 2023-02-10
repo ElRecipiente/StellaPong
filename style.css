@@ -6,14 +6,18 @@
 
 main {
     position: relative;
-    background: black;
+    background-image: url(img/fireball-fire.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 100vw;
     height: 100vh;
 }
 
 div.racket {
     position: absolute;
-    background: white;
+    background-image: url(img/batte.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 1vw;
     height: 15vh;
     transition: top 0.25s;
@@ -29,12 +33,13 @@ div.racket#P2 {
     left: 95vw;
 }
 
-div#ball {
+#ball {
     position: absolute;
     top: 0;
     left: 0;
     width: 1vh;
     height: 1vh;
     background: white;
+    box-shadow: 0 0 4px white;
     border-radius: 50%;
 }

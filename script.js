@@ -1,6 +1,6 @@
 let playerOne = document.querySelector("div.racket#P1")
 let playerTwo = document.querySelector("div.racket#P2")
-let theBall = document.querySelector("div#ball")
+let theBall = document.querySelector("#ball")
 let directionX = true;
 let directionY = 0;
 let ballX = 50;
@@ -80,19 +80,19 @@ function moveTheBall(directionX, directionY) {
             theBall.style.top = `${ballY}vh`;
         }
 
-        if (ballY > 99 && directionY == 1) {
+        if (ballY > 98 && directionY == 1) {
             directionY = -1;
         }
 
-        else if (ballY > 99 && directionY == 2) {
+        else if (ballY > 98 && directionY == 2) {
             directionY = -2;
         }
 
-        else if (ballY > 99 && directionY == -1) {
+        else if (ballY > 98 && directionY == -1) {
             directionY = 1;
         }
 
-        else if (ballY > 99 && directionY == -2) {
+        else if (ballY > 98 && directionY == -2) {
             directionY = 2;
         }
 
@@ -170,7 +170,7 @@ function moveTheBall(directionX, directionY) {
         }
 
         // Si la balle touche un bord en X ou non :
-        if (0 < ballX && ballX < 99) {
+        if (0 < ballX && ballX < 98) {
             window.requestAnimationFrame(() => {
                 moveTheBall(directionX, directionY);
                 console.log(ballY);
@@ -186,10 +186,6 @@ function moveTheBall(directionX, directionY) {
         }
     }
 }
-
-
-
-theBall.style.background = "red";
 
 moveTheBall(directionX, directionY);
 
