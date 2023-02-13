@@ -14,6 +14,7 @@ let maxWindowHeight = 99;
 let gameEnd = true;
 let scoreP1 = 0;
 let scoreP2 = 0;
+let backMusic = false;
 
 function playList() {
     let bgAudio = new Audio("music/Stellaris.mp3");
@@ -235,7 +236,16 @@ function replay() {
         pongY = 45;
         playerOne.style.top = `${pingY}vh`;
         playerTwo.style.top = `${pongY}vh`;
-        playList();
+
+        if (!backMusic) {
+            playList();
+            backMusic = true;
+            console.log("musique lancée")
+
+            setTimeout(() => {
+                backMusic = false;
+            }, 400000);
+        }
 
         moveTheBall(directionX, directionY);
     }
