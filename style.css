@@ -113,3 +113,27 @@ div.racket#P2 {
     background-repeat: no-repeat;
     background-size: cover;
 } */
+
+/*** Mobile PAD ***/
+div.mobilePads {
+    visibility: hidden;
+}
+
+@media screen and (max-width: 1200px) {
+
+    button {
+        z-index: 20;
+    }
+
+    div.mobilePads {
+        visibility: visible;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 50vh);
+        z-index: 15;
+    }
+
+}

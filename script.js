@@ -41,8 +41,40 @@ document.addEventListener("keydown", (event) => {
         pingY -= 5;
         playerOne.style.top = `${pingY}vh`;
     }
-    console.log(pongY);
-    console.log(pingY);
+})
+
+//*** Touch Event Listener ***//
+let arrowUpLeft = document.querySelector(".mobilePads .mobilePad1");
+let arrowDownLeft = document.querySelector(".mobilePads .mobilePad3");
+let arrowUpRight = document.querySelector(".mobilePads .mobilePad2");
+let arrowDownRight = document.querySelector(".mobilePads .mobilePad4");
+
+arrowUpLeft.addEventListener("click", () => {
+    if (pingY > 0) {
+        pingY -= 5;
+        playerOne.style.top = `${pingY}vh`;
+    }
+})
+
+arrowDownLeft.addEventListener("click", () => {
+    if (pingY < gameWindowHeight) {
+        pingY += 5;
+        playerOne.style.top = `${pingY}vh`;
+    }
+})
+
+arrowUpRight.addEventListener("click", () => {
+    if (pongY > 0) {
+        pongY -= 5;
+        playerTwo.style.top = `${pongY}vh`;
+    }
+})
+
+arrowDownRight.addEventListener("click", () => {
+    if (pongY < gameWindowHeight) {
+        pongY += 5;
+        playerTwo.style.top = `${pongY}vh`;
+    }
 })
 
 // *** Move The Ball ***//
