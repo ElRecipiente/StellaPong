@@ -4,14 +4,16 @@ let theBall = document.querySelector("#ball")
 let directionX = true;
 let directionY = 0;
 let ballX = 50;
-let ballY = 0;
-let pingY = 0;
-let pongY = 0;
+let ballY = 52;
+let pingY = 45;
+let pongY = 45;
 let gameWindowHeight = 85;
 let maxWindowWidth = 99;
 let minWindowHeight = 0;
 let maxWindowHeight = 99;
 let gameEnd = false;
+let scoreP1 = 0;
+let scoreP2 = 0;
 
 // *** Key Event Listener *** //
 document.addEventListener("keydown", (event) => {
@@ -40,10 +42,32 @@ document.addEventListener("keydown", (event) => {
 // *** Move The Ball ***//
 
 function moveTheBall(directionX, directionY) {
-    // console.log(directionX);
-    // console.log(directionY);
+
+    // détermine la couleur de la balle
+    if (directionX) {
+        theBall.style.background = "rgb(255, 166, 0)";
+        theBall.style.boxShadow = "-4px 0 12px rgb(255, 166, 0)";
+    }
+
+    else {
+        theBall.style.background = "rgb(0, 162, 255)";
+        theBall.style.boxShadow = "4px 0 12px rgb(0, 162, 255)";
+    }
+
+    // s'exécute quand la partie se termine
     if (gameEnd == true) {
-        alert("GAME OVER");
+        let showP1Score = document.querySelector("main p span.red")
+        let showP2Score = document.querySelector("main p span.blue")
+        theBall.classList.add("boum");
+
+        if (ballX > 98) {
+            showP1Score.textContent = `${scoreP1 += 1}`;
+        }
+
+        else {
+            showP2Score.textContent = `${scoreP2 += 1}`;
+        }
+        console.log(directionX);
     }
 
     else {
@@ -77,6 +101,10 @@ function moveTheBall(directionX, directionY) {
 
         else if (directionY == -2) {
             ballY = ballY - 0.6;
+            theBall.style.top = `${ballY}vh`;
+        }
+
+        else if (directionY == 0) {
             theBall.style.top = `${ballY}vh`;
         }
 
@@ -173,7 +201,6 @@ function moveTheBall(directionX, directionY) {
         if (0 < ballX && ballX < 98) {
             window.requestAnimationFrame(() => {
                 moveTheBall(directionX, directionY);
-                console.log(ballY);
             })
         }
 
@@ -189,5 +216,19 @@ function moveTheBall(directionX, directionY) {
 
 moveTheBall(directionX, directionY);
 
+function replay() {
+    if (gameEnd) {
+        gameEnd = false;
+        theBall.classList.remove("boum");
+        ballX = 50;
+        ballY = 52;
+        pingY = 45;
+        pongY = 45;
+        playerOne.style.top = `${pingY}vh`;
+        playerTwo.style.top = `${pongY}vh`;
+
+        moveTheBall(directionX, directionY);
+    }
+}
 
 //*** Collision ***//

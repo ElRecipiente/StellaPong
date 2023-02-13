@@ -4,32 +4,72 @@
     box-sizing: border-box;
 }
 
+
+p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgba(216, 42, 201, 0.952);
+    text-shadow: 0 0 20px;
+    padding: 1em;
+}
+
+.red {
+    color: rgb(255, 166, 0);
+}
+
+.blue {
+    color: rgb(0, 162, 255);
+}
+
+p button {
+    border: 1px solid rgba(216, 42, 201, 0.952);
+    background: transparent;
+    color: rgba(216, 42, 201, 0.952);
+    padding: 1em;
+    margin: 0 2em;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px;
+    box-shadow: 0 0 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+p button:hover {
+    text-shadow: 0 0 16px;
+    box-shadow: 0 0 16px;
+}
+
 main {
     position: relative;
-    background-image: url(img/fireball-fire.gif);
+    background-image: url(img/bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
 
 div.racket {
     position: absolute;
-    background-image: url(img/batte.png);
-    background-repeat: no-repeat;
-    background-size: cover;
     width: 1vw;
     height: 15vh;
     transition: top 0.25s;
 }
 
 div.racket#P1 {
-    top: 0vh;
+    background: rgb(255, 166, 0);
+    box-shadow: 0 0 12px rgb(255, 166, 0);;
+    top: 45vh;
     left: 5vw;
 }
 
 div.racket#P2 {
-    top: 0vh;
+    background: rgb(0, 162, 255);
+    box-shadow: 0 0 12px rgb(0, 162, 255);
+    top: 45vh;
     left: 95vw;
 }
 
@@ -40,6 +80,31 @@ div.racket#P2 {
     width: 1vh;
     height: 1vh;
     background: white;
-    box-shadow: 0 0 4px white;
+    box-shadow: 0 0 8px white;
     border-radius: 50%;
 }
+
+.boum {
+    animation: boum 2s forwards;
+}
+
+@keyframes boum {
+
+    100% {
+        transform: scale(50);
+        opacity: 0;
+    }
+
+}
+
+/* #ball::after {
+    content: "";
+    position: absolute;
+    top: -150%;
+    left: -150%;
+    width: 5vh;
+    height: 5vh;
+    background-image: url(img/staticBall.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
