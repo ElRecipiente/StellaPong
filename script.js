@@ -58,7 +58,12 @@ function moveTheBall(directionX, directionY) {
     if (gameEnd == true) {
         let showP1Score = document.querySelector("main p span.red")
         let showP2Score = document.querySelector("main p span.blue")
-        theBall.classList.add("boum");
+        let boumAudio = new Audio("music/Boum.mp3");
+        boumAudio.play();
+        theBall.classList.add("radiant");
+        setTimeout(() => {
+            theBall.classList.add("boum");
+        }, 300);
 
         if (ballX > 98) {
             showP1Score.textContent = `${scoreP1 += 1}`;
@@ -220,6 +225,7 @@ function replay() {
     if (gameEnd) {
         gameEnd = false;
         theBall.classList.remove("boum");
+        theBall.classList.remove("radiant");
         ballX = 50;
         ballY = 52;
         pingY = 45;

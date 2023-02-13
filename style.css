@@ -79,9 +79,14 @@ div.racket#P2 {
     left: 0;
     width: 1vh;
     height: 1vh;
-    background: white;
-    box-shadow: 0 0 8px white;
     border-radius: 50%;
+    transition: background-color 0.3s ease-out,
+    box-shadow 0.3s ease-out;
+}
+
+.radiant {
+    box-shadow: 0 0 24px white !important;
+    background: white !important;
 }
 
 .boum {
