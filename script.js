@@ -11,9 +11,14 @@ let gameWindowHeight = 85;
 let maxWindowWidth = 99;
 let minWindowHeight = 0;
 let maxWindowHeight = 99;
-let gameEnd = false;
+let gameEnd = true;
 let scoreP1 = 0;
 let scoreP2 = 0;
+
+function playList() {
+    let bgAudio = new Audio("music/Stellaris.mp3");
+    bgAudio.play();
+}
 
 // *** Key Event Listener *** //
 document.addEventListener("keydown", (event) => {
@@ -219,8 +224,6 @@ function moveTheBall(directionX, directionY) {
     }
 }
 
-moveTheBall(directionX, directionY);
-
 function replay() {
     if (gameEnd) {
         gameEnd = false;
@@ -232,6 +235,7 @@ function replay() {
         pongY = 45;
         playerOne.style.top = `${pingY}vh`;
         playerTwo.style.top = `${pongY}vh`;
+        playList();
 
         moveTheBall(directionX, directionY);
     }
